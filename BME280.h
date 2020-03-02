@@ -2,31 +2,28 @@
  ******************************************************************************
  * @file    BME280.h
  * @author  Toyomasa Watarai
- * @version V1.0.0
- * @date    11 March 2017
  * @brief   This file contains the class of a BME280 Combined humidity and pressure sensor library with I2C interface
  ******************************************************************************
- * @attention
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
  */
- 
+
+/* mbed Microcontroller Library
+* Copyright (c) 2006-2020 ARM Limited
+*
+* SPDX-License-Identifier: Apache-2.0
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+  
 /**
  *  Library for "BME280 temperature, humidity and pressure sensor module" from Switch Science
  *    https://www.switch-science.com/catalog/2236/
@@ -43,8 +40,7 @@
 #define DEFAULT_SLAVE_ADDRESS (0x76 << 1)
 
 #ifdef _DEBUG
-extern Serial pc;
-#define DEBUG_PRINT(...) pc.printf(__VA_ARGS__)
+#define DEBUG_PRINT(...) printf(__VA_ARGS__)
 #else
 #define DEBUG_PRINT(...)
 #endif
@@ -55,7 +51,6 @@ extern Serial pc;
  * #include "mbed.h"
  * #include "BME280.h"
  * 
- * Serial pc(USBTX, USBRX);
  * 
  * #if defined(TARGET_LPC1768)
  * BME280 sensor(p28, p27);
@@ -66,8 +61,8 @@ extern Serial pc;
  * int main() {
  *     
  *     while(1) {
- *         pc.printf("%2.2f degC, %04.2f hPa, %2.2f %%\n", sensor.getTemperature(), sensor.getPressure(), sensor.getHumidity());
- *         wait(1);
+ *         printf("%2.2f degC, %04.2f hPa, %2.2f %%\n", sensor.getTemperature(), sensor.getPressure(), sensor.getHumidity());
+ *         thread_sleep_for(1000);
  *     }
  * }
  * 
