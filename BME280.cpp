@@ -115,7 +115,7 @@ void BME280::initialize()
  
 float BME280::getTemperature()
 {
-    uint32_t temp_raw;
+    int32_t temp_raw;
     float tempf;
     char cmd[4];
  
